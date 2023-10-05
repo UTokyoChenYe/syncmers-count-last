@@ -1,4 +1,4 @@
-def read_noverlap_results(file_path, filename):
+def read_noverlap_results(filename):
     """Reads the results of a noverlap experiment from a file.And returns a list of the results.
 
     Args:
@@ -9,7 +9,7 @@ def read_noverlap_results(file_path, filename):
         result_list(list): The results of the experiment.
     """
     result_list = []
-    with open(file_path + '/'+filename, 'r') as f:
+    with open(filename, 'r') as f:
         for line in f:
             result_list.append(line.strip())
     return result_list
