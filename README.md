@@ -2,4 +2,6 @@
 ## Related Software
 noverlap softmare by Martin Frith
 ## Function
-| load_file.py| load the results of dna-seed-sim and pack them as a list| 
+| Function name | Description |
+| :----: | :----: |
+| load_file.py| load the results of dna-seed-sim and pack them as a list | 
