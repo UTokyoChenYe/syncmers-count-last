@@ -1,4 +1,4 @@
-def seed_count(sequence_a, sequence_b):
+def similar_seed_count(sequence_a, sequence_b):
 
     seed_count = 0
 

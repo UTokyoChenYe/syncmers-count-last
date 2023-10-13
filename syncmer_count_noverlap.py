@@ -15,7 +15,7 @@ if __name__ == '__main__':
             species_list.append(line.strip()+'.txt')
 
     # Get the results from the file, pack as list
-    sequence_human = read_noverlap_results('Homo sapiens neanderthalensis mitochondrion.txt')
+    sequence_human = read_noverlap_results('Homo_sapiens_neanderthalensis_mitochondrion.txt')
 
     species_human_jaccard_index_dic = {}
 
