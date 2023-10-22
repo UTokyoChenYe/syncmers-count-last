@@ -4,8 +4,7 @@ sys.path.append('/home/chenye/result/John')
 sys.path.append('/home/chenye/data/mitochondrion')
 from load_file import read_noverlap_results
 from estimate_parameter import hash, jaccard_distance_estimation, containment_distance_estimation
-from distance import mash_distance, mash_containment
-from plot_dic import plot_dic
+from distance import mash_distance, mash_containment 
 
 #Get the name of species fro a file and add to a list
 
@@ -26,18 +25,18 @@ if __name__ == '__main__':
         # sequence_none_human sequence_human
         hash_human, hash_none_human = hash(sequence_human, sequence_none_human)
 
-        s = min
+        s = min(len(sequence_human), len(sequence_none_human))
         j = jaccard_distance_estimation(hash_human, hash_none_human, s)
-        cde_a, cde_b = containment_distance_estimation(hash_human, hash_none_human, m)
+        cde_a, cde_b = containment_distance_estimation(hash_human, hash_none_human, s)
 
-        
+        mash_distance_13 = mash_distance(13, j)
+        mash_containment_13_a = mash_containment(13, cde_a)
+        mash_containment_13_b = mash_containment(13, cde_b)
 
-        species_human_jaccard_index_dic[species_name] = jaccard_index
-    
-
-
-
-    plot_dic(species_human_jaccard_index_dic, species_human_blast_dic)
+        print(mash_distance_13)
+        print(mash_containment_13_a)
+        print(mash_containment_13_b)
+        break
 
 
 
