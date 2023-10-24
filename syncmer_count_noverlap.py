@@ -1,6 +1,7 @@
 from load_file import read_noverlap_results
 from estimate_parameter import hash, jaccard_distance_estimation, containment_distance_estimation
 from distance import mash_distance, mash_containment 
+import pandas as pd
 
 #Get the name of species fro a file and add to a list
 
@@ -34,15 +35,16 @@ if __name__ == '__main__':
         species_human_mash_similarity_13_dic[species_name] = mash_similarity_13
         species_human_mash_similarity_cde_human_13_dic[species_name] = mash_similarity_cde_human_13
         species_human_mash_similarity_cde_none_human_13_dic[species_name] = mash_similarity_cde_none_human_13
-    print("Jaccard distance")
-    print("------------------------------------------------------------------")
-    print(species_human_mash_similarity_13_dic)
-    print("Containment distance-human")
-    print("------------------------------------------------------------------")
+
+    species_human_mash_similarity_13_list = [species_human_mash_similarity_13_dic]
+    jaccard_distance_df = pd.DataFrame(species_human_mash_similarity_13_list).T
+    jaccard_distance_df.rename(columns={0: 'jaccard_distance'}, inplace=True)
+    print(jaccard_distance_df)
     print(species_human_mash_similarity_cde_human_13_dic)
-    print("Containment distance-none-human")
-    print("------------------------------------------------------------------")
-    print(species_human_mash_similarity_cde_none_human_13_dic)
+
+
+    
+    
 
 
 
