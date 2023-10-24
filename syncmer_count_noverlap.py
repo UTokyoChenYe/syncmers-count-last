@@ -1,6 +1,6 @@
 from load_file import read_noverlap_results
-from estimate_parameter import hash, jaccard_distance_estimation, containment_distance_estimation
-from distance import mash_distance, mash_containment 
+from estimate_parameter import hash, containment_distance_estimation
+from distance import mash_containment 
 import pandas as pd
 
 #Get the name of species fro a file and add to a list
@@ -14,7 +14,6 @@ if __name__ == '__main__':
     # Get the results from the file, pack as list
     sequence_human = read_noverlap_results('/home/chenye/result/John/Homo_sapiens_neanderthalensis_mitochondrion.txt')
 
-    species_human_mash_similarity_13_dic = {}
     species_human_mash_similarity_cde_human_13_dic = {}
     species_human_mash_similarity_cde_none_human_13_dic = {}
 
@@ -24,24 +23,24 @@ if __name__ == '__main__':
         # sequence_none_human sequence_human
         hash_human, hash_none_human = hash(sequence_human, sequence_none_human)
 
-        s = min(len(sequence_human), len(sequence_none_human))
-        j = jaccard_distance_estimation(hash_human, hash_none_human, s)
-        cde_human, cde_none_human = containment_distance_estimation(hash_human, hash_none_human, s)
+        cde_human, cde_none_human = containment_distance_estimation(hash_human, hash_none_human)
 
-        mash_similarity_13 = 1.0 - mash_distance(13, j)
-        mash_similarity_cde_human_13 = 1.0 - mash_containment(13, cde_human)
-        mash_similarity_cde_none_human_13 = 1.0 - mash_containment(13, cde_none_human)
+        mash_similarity_cde_human_13 = mash_containment(13, cde_human)
+        mash_similarity_cde_none_human_13 = mash_containment(13, cde_none_human)
 
-        species_human_mash_similarity_13_dic[species_name] = mash_similarity_13
         species_human_mash_similarity_cde_human_13_dic[species_name] = mash_similarity_cde_human_13
         species_human_mash_similarity_cde_none_human_13_dic[species_name] = mash_similarity_cde_none_human_13
 
-    species_human_mash_similarity_13_list = [species_human_mash_similarity_13_dic]
-    jaccard_distance_df = pd.DataFrame(species_human_mash_similarity_13_list).T
-    jaccard_distance_df.rename(columns={0: 'jaccard_distance'}, inplace=True)
-    print(jaccard_distance_df)
-    print(species_human_mash_similarity_cde_human_13_dic)
-
+    species_human_mash_similarity_cde_human_13_list = [species_human_mash_similarity_cde_human_13_dic]
+    cde_human_df = pd.DataFrame(species_human_mash_similarity_cde_human_13_list).T
+    cde_human_df.rename(columns={0: 'mash_containment_human'}, inplace=True)
+    
+    species_human_mash_similarity_cde_none_human_13_list = [species_human_mash_similarity_cde_none_human_13_dic]
+    cde_none_human_df = pd.DataFrame(species_human_mash_similarity_cde_none_human_13_list).T
+    cde_none_human_df.rename(columns={0: 'mash_containment_none_human'}, inplace=True)
+    
+    df = pd.concat([cde_human_df, cde_none_human_df], axis=1)
+    print(df)
 
     
     
