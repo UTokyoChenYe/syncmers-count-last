@@ -5,7 +5,7 @@ import pandas as pd
 
 #Get the name of species fro a file and add to a list
 
-if __name__ == '__main__':
+def return_syncmer_results():
     with open('/home/chenye/data/mitochondrion/species.txt', 'r') as f:
         species_list = []
         for line in f:
@@ -40,7 +40,10 @@ if __name__ == '__main__':
     cde_none_human_df.rename(columns={0: 'mash_containment_none_human'}, inplace=True)
     
     df = pd.concat([cde_human_df, cde_none_human_df], axis=1)
-    print(df)
+    
+    return df
+
+    
 
     
     
