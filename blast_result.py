@@ -16,6 +16,15 @@ def blast_result():
            "Pan_troglodytes_mitochondrion.txt": 0.9138,
            "Pelagia_noctiluca_mitochondrion.txt": 0.6715,
            "Trimerodytes_annularis_mitochondrion.txt": 0.6962,
+           "Alouatta_seniculus_mitochondrion.txt": 0.7922,
+           "Papio_papio_mitochondrion.txt": 0.7923,
+           "Cebus_albifrons_mitochondrion.txt": 0.7931,
+           "Nasalis_larvatus_mitochondrion.txt": 0.7935,
+           "Daubentonia_madagascariensis_mitochondrion.txt": 0.7523,
+           "Pongo_abelii_mitochondrion.txt": 0.8563,
+           "Nomascus_leucogenys_mitochondrion.txt": 0.8433,
+           "Gorilla_gorilla_mitochondrion.txt": 0.8955,
+           "Pan_paniscus_mitochondrion.txt": 0.9150
            }
     blast_list = [blast_dic]
     blast_df = pd.DataFrame(blast_list).T
