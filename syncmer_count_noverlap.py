@@ -7,7 +7,7 @@ import pandas as pd
 #Get the name of species fro a file and add to a list
 
 def return_syncmer_results():
-    with open('/home/chenye/data/mitochondrion/species.txt', 'r') as f:
+    with open('/home/chenye/data/mitochondrion/species.txt', 'r') as f: #check species.txt in fasta folder
         species_list = []
         for line in f:
             species_list.append(line.strip()+'.txt')
